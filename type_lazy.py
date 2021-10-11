@@ -7,7 +7,7 @@ class TypeCheck:
     it will return default_value. Which can be any type.
     """
     @staticmethod
-    def is_this(default_value:any = None, check_value:bool = None, this_value:any = None):
+    def is_this(default_value:any = None, check_value:any = None, this_value:any = None):
         """
         If you want to compare unique types, please use this method.
         default_value:
