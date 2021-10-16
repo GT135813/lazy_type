@@ -11,13 +11,28 @@ class TypeCheck:
         """
         If you want to compare unique types, please use this method.
         default_value:
-        returned if type(check_value) != type(this_value)
+            returned if type(check_value) != type(this_value)
         check_value:
-        returned if type(check_value) == type(this_value)
+            returned if type(check_value) == type(this_value)
         this_value:
-        return default_value If type(check_value) != type(this_value)
-        Do not input the datatype for this_value
-        The method will inspect the type.                    
+            return default_value If type(check_value) != type(this_value)
+        Do not input the datatype for this_value.
+        Ex: check_value is returned
+            abc_012 = TypeCheck.is_this(
+                default_value = 314,
+                check_value = 159,
+                this_value = 265)
+            >>> print(abc_012)
+            >>> 159
+        Thought process: return default_value if check_value's type != this_value's type
+        Ex: default_value is returned because type(check_value) != type(this_value)
+            cba_210 = TypeCheck.is_this(
+                default_value = "Im returned", 
+                check_value = "because Im string",
+                this_value = ["and Im list"])
+            >>> print(cba_210)
+            >>> Im returned
+        Thought process: return default_value if check_value's type != this_value's type
         """
         return default_value if not isinstance(check_value, type(this_value)) else check_value
     
@@ -94,3 +109,9 @@ class TypeCheck:
         assert TypeCheck.is_float("testing bad input for is_float", 3)
         assert TypeCheck.is_float("testing bad input for is_float", "3.14")
         assert TypeCheck.is_float("testing bad input for is_float", ["this shouldn't work"])
+        
+        assert TypeCheck.is_bool("this default value can be anything you want", True)
+        assert TypeCheck.is_bool("the line before me is False", False)
+        assert TypeCheck.is_bool("testing bad input for is_bool", 3)
+        assert TypeCheck.is_bool("test default value", "3.14")
+        assert TypeCheck.is_bool("test default value", ["this shouldn't work"])
